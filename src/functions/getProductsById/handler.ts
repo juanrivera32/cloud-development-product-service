@@ -2,8 +2,7 @@ import type { ValidatedEventAPIGatewayProxyEvent } from '@libs/api-gateway';
 import { formatJSONResponse } from '@libs/api-gateway';
 import { middyfy } from '@libs/lambda';
 import products from '@libs/mockProducts.json';
-
-type Product = typeof products[0];
+import type { Product } from 'src/models/Product';
 
 const findProduct = (productId: string): Promise<Product> => {
   const product = products.find(product => product.id === productId);

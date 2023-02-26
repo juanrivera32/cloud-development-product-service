@@ -6,7 +6,7 @@ import getProductsById from '@functions/getProductsById';
 const serverlessConfiguration: AWS = {
   service: 'product-service',
   frameworkVersion: '3',
-  plugins: ['serverless-esbuild'],
+  plugins: ['serverless-openapi-documentation', 'serverless-esbuild'],
   provider: {
     name: 'aws',
     runtime: 'nodejs14.x',
@@ -39,7 +39,27 @@ const serverlessConfiguration: AWS = {
       platform: 'node',
       concurrency: 10,
     },
+    documentation: {
+      version: '1',
+      title: 'Products Service API',
+      description: 'This is the products service API used for the AWS Practitioner for JS course.',
+      models: [
+        {
+          name: 'ErrorResponse',
+          description: 'This is an error',
+          contentType: 'application/json',
+          schema: `${__dirname}/models/ErrorResponse.json`
+        },
+        {
+          name: 'Product',
+          description: 'Schema for product definition',
+          contentType: 'application/json',
+          schema: `${__dirname}/models/Product.json`
+        }
+      ]
+    }
   },
+  // configValidationMode: 'error'
 };
 
 module.exports = serverlessConfiguration;
