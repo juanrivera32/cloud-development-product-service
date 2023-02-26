@@ -15,21 +15,18 @@ const getProductsList: ValidatedEventAPIGatewayProxyEvent<unknown> = async (even
     if (!products.length) {
       return formatJSONResponse({
         statusCode: 404,
-        event,
         products,
       });
     }
 
     return formatJSONResponse({
       statusCode: 200,
-      event,
       products,
     });
   } catch (error) {
     return formatJSONResponse({
       statusCode: 500,
-      event,
-      error: `Internal server error: ${error}`
+      message: `Internal server error: ${error}`
     })
   }
 

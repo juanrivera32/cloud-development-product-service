@@ -20,20 +20,17 @@ const getProductsById: ValidatedEventAPIGatewayProxyEvent<unknown> = async (even
     if (!product) {
       return formatJSONResponse({
         statusCode: 404,
-        event,
         message: `Product ${productId} was not found`
       });
     }
     
     return formatJSONResponse({
       statusCode: 200,
-      event,
       product
     });
   } catch (error) {
     return formatJSONResponse({
       statusCode: 404,
-      event,
       message: `Internal server error. Try again later: ${error}`,
     });
   }
