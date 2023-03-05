@@ -4,6 +4,7 @@
         "title": "Barron's GRE, 21st Edition",
         "author": "Sharon Weiner Green M.A.",
         "category": "Test Preparation",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. At sed nisi omnis sapiente cumque tempora autem fuga est quos nobis ratione repudiandae laudantium sequi quae quod, ab, voluptatibus eius porro.",
         "price": 23
     },
     {
@@ -11,6 +12,7 @@
         "title": "George Balanchine: The Ballet Maker (Eminent Lives)",
         "author": "Robert Gottlieb",
         "category": "Biographies & Memoirs",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. At sed nisi omnis sapiente cumque tempora autem fuga est quos nobis ratione repudiandae laudantium sequi quae quod, ab, voluptatibus eius porro.",
         "price": 22
     },
     {
@@ -18,6 +20,7 @@
         "title": "Construction Scheduling: Principles and Practices (2nd Edition)",
         "author": "Jay S. Newitt",
         "category": "Arts & Photography",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. At sed nisi omnis sapiente cumque tempora autem fuga est quos nobis ratione repudiandae laudantium sequi quae quod, ab, voluptatibus eius porro.",
         "price": 19
     },
     {
@@ -25,6 +28,7 @@
         "title": "Literature and Its Writers: A Compact Introduction to Fiction, Poetry, and Drama",
         "author": "Ann Charters",
         "category": "Literature & Fiction",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. At sed nisi omnis sapiente cumque tempora autem fuga est quos nobis ratione repudiandae laudantium sequi quae quod, ab, voluptatibus eius porro.",
         "price": 31
     },
     {
@@ -32,6 +36,7 @@
         "title": "Straight on Till Morning: The Life of Beryl Markham",
         "author": "Mary S. Lovell",
         "category": "Engineering & Transportation",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. At sed nisi omnis sapiente cumque tempora autem fuga est quos nobis ratione repudiandae laudantium sequi quae quod, ab, voluptatibus eius porro.",
         "price": 18
     },
     {
@@ -39,6 +44,7 @@
         "title": "Diagrammatica: The Path to Feynman Diagrams (Cambridge Lecture Notes in Physics)",
         "author": "Martinus Veltman",
         "category": "Science & Math",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. At sed nisi omnis sapiente cumque tempora autem fuga est quos nobis ratione repudiandae laudantium sequi quae quod, ab, voluptatibus eius porro.",
         "price": 25
     },
     {
@@ -46,6 +52,7 @@
         "title": "A Handful of Stars",
         "author": "Cynthia Lord",
         "category": "Children's Books",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. At sed nisi omnis sapiente cumque tempora autem fuga est quos nobis ratione repudiandae laudantium sequi quae quod, ab, voluptatibus eius porro.",
         "price": 26
     },
     {
@@ -53,6 +60,7 @@
         "title": "Almost Anorexic: Is My (or My Loved One's) Relationship with Food a Problem? (The Almost Effect)",
         "author": "Ph.D. Jennifer J Thomas",
         "category": "Self-Help",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. At sed nisi omnis sapiente cumque tempora autem fuga est quos nobis ratione repudiandae laudantium sequi quae quod, ab, voluptatibus eius porro.",
         "price": 23
     },
     {
@@ -60,6 +68,7 @@
         "title": "Organ Transplantation (Health and Medical Issues Today)",
         "author": "David Petechuk",
         "category": "Health, Fitness & Dieting",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. At sed nisi omnis sapiente cumque tempora autem fuga est quos nobis ratione repudiandae laudantium sequi quae quod, ab, voluptatibus eius porro.",
         "price": 24
     },
     {
@@ -67,6 +76,7 @@
         "title": "The Age of Acquiescence: The Life and Death of American Resistance to Organized Wealth and Power",
         "author": "Steve Fraser",
         "category": "Business & Money",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. At sed nisi omnis sapiente cumque tempora autem fuga est quos nobis ratione repudiandae laudantium sequi quae quod, ab, voluptatibus eius porro.",
         "price": 22.99
     },
     {
@@ -74,6 +84,7 @@
         "title": "The Multiples Manual: Preparing and Caring for Twins or Triplets",
         "author": "Lynn Lorenz",
         "category": "Parenting & Relationships",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. At sed nisi omnis sapiente cumque tempora autem fuga est quos nobis ratione repudiandae laudantium sequi quae quod, ab, voluptatibus eius porro.",
         "price": 21.95
     },
     {
@@ -81,6 +92,7 @@
         "title": "Oregon High: A Climbing Guide to Nine Cascade Volcanoes",
         "author": "Jeff Thomas",
         "category": "Sports & Outdoors",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. At sed nisi omnis sapiente cumque tempora autem fuga est quos nobis ratione repudiandae laudantium sequi quae quod, ab, voluptatibus eius porro.",
         "price": 32
     },
     {
@@ -88,6 +100,7 @@
         "title": "HTML & XHTML: The Definitive Guide (6th Edition)",
         "author": "Chuck Musciano",
         "category": "Computers & Technology",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. At sed nisi omnis sapiente cumque tempora autem fuga est quos nobis ratione repudiandae laudantium sequi quae quod, ab, voluptatibus eius porro.",
         "price": 28
     },
     {
@@ -95,6 +108,7 @@
         "title": "Anti Inflammatory Cookbook - 50 Slow Cooker Recipes With Anti - Inflammatory Ingredients: Great For Gout! (Slow Cooker Cookbooks)",
         "author": "Kate Marsh",
         "category": "Cookbooks, Food & Wine",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. At sed nisi omnis sapiente cumque tempora autem fuga est quos nobis ratione repudiandae laudantium sequi quae quod, ab, voluptatibus eius porro.",
         "price": 19.99
     },
     {
@@ -102,6 +116,7 @@
         "title": "Leopard Geckos (Complete Herp Care)",
         "author": "Gerald Merker",
         "category": "Crafts, Hobbies & Home",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. At sed nisi omnis sapiente cumque tempora autem fuga est quos nobis ratione repudiandae laudantium sequi quae quod, ab, voluptatibus eius porro.",
         "price": 20
     },
     {
@@ -109,6 +124,7 @@
         "title": "Botswana & Its National Heritage",
         "author": "Sandy Grant",
         "category": "Travel",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. At sed nisi omnis sapiente cumque tempora autem fuga est quos nobis ratione repudiandae laudantium sequi quae quod, ab, voluptatibus eius porro.",
         "price": 26.50
     }
 ]
