@@ -1,0 +1,114 @@
+[
+    {
+        "id": "510l0qhi01L",
+        "title": "Barron's GRE, 21st Edition",
+        "author": "Sharon Weiner Green M.A.",
+        "category": "Test Preparation",
+        "price": 23
+    },
+    {
+        "id": "51p5aUY2BOKL",
+        "title": "George Balanchine: The Ballet Maker (Eminent Lives)",
+        "author": "Robert Gottlieb",
+        "category": "Biographies & Memoirs",
+        "price": 22
+    },
+    {
+        "id": "51PuTPPCxaL",
+        "title": "Construction Scheduling: Principles and Practices (2nd Edition)",
+        "author": "Jay S. Newitt",
+        "category": "Arts & Photography",
+        "price": 19
+    },
+    {
+        "id": "51uNnIlIwrL",
+        "title": "Literature and Its Writers: A Compact Introduction to Fiction, Poetry, and Drama",
+        "author": "Ann Charters",
+        "category": "Literature & Fiction",
+        "price": 31
+    },
+    {
+        "id": "51VIlqRy-VL",
+        "title": "Straight on Till Morning: The Life of Beryl Markham",
+        "author": "Mary S. Lovell",
+        "category": "Engineering & Transportation",
+        "price": 18
+    },
+    {
+        "id": "41n7iZq-0jL",
+        "title": "Diagrammatica: The Path to Feynman Diagrams (Cambridge Lecture Notes in Physics)",
+        "author": "Martinus Veltman",
+        "category": "Science & Math",
+        "price": 25
+    },
+    {
+        "id": "51KyLXczCqL",
+        "title": "A Handful of Stars",
+        "author": "Cynthia Lord",
+        "category": "Children's Books",
+        "price": 26
+    },
+    {
+        "id": "51Jku59B9CL",
+        "title": "Almost Anorexic: Is My (or My Loved One's) Relationship with Food a Problem? (The Almost Effect)",
+        "author": "Ph.D. Jennifer J Thomas",
+        "category": "Self-Help",
+        "price": 23
+    },
+    {
+        "id": "51C16779N8L",
+        "title": "Organ Transplantation (Health and Medical Issues Today)",
+        "author": "David Petechuk",
+        "category": "Health, Fitness & Dieting",
+        "price": 24
+    },
+    {
+        "id": "51JFeqcU96L",
+        "title": "The Age of Acquiescence: The Life and Death of American Resistance to Organized Wealth and Power",
+        "author": "Steve Fraser",
+        "category": "Business & Money",
+        "price": 22.99
+    },
+    {
+        "id": "51kOYa-LHML",
+        "title": "The Multiples Manual: Preparing and Caring for Twins or Triplets",
+        "author": "Lynn Lorenz",
+        "category": "Parenting & Relationships",
+        "price": 21.95
+    },
+    {
+        "id": "51bWdcsbX0L",
+        "title": "Oregon High: A Climbing Guide to Nine Cascade Volcanoes",
+        "author": "Jeff Thomas",
+        "category": "Sports & Outdoors",
+        "price": 32
+    },
+    {
+        "id": "5159f7hqJjL",
+        "title": "HTML & XHTML: The Definitive Guide (6th Edition)",
+        "author": "Chuck Musciano",
+        "category": "Computers & Technology",
+        "price": 28
+    },
+    {
+        "id": "5178fq2DV3L",
+        "title": "Anti Inflammatory Cookbook - 50 Slow Cooker Recipes With Anti - Inflammatory Ingredients: Great For Gout! (Slow Cooker Cookbooks)",
+        "author": "Kate Marsh",
+        "category": "Cookbooks, Food & Wine",
+        "price": 19.99
+    },
+    {
+        "id": "51zi2q5JfbL",
+        "title": "Leopard Geckos (Complete Herp Care)",
+        "author": "Gerald Merker",
+        "category": "Crafts, Hobbies & Home",
+        "price": 20
+    },
+    {
+        "id": "51AdbQZwDuL",
+        "title": "Botswana & Its National Heritage",
+        "author": "Sandy Grant",
+        "category": "Travel",
+        "price": 26.50
+    }
+]
