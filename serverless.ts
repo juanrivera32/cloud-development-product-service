@@ -59,6 +59,54 @@ const serverlessConfiguration: AWS = {
       ]
     }
   },
+  resources: {
+    Resources: {
+      stocks: {
+        Type: 'AWS::DynamoDB::Table',
+        Properties: {
+          TableName: 'stocks',
+          AttributeDefinitions: [
+            {
+              AttributeName: 'stockId',
+              AttributeType: 'S'
+            },
+          ],
+          KeySchema: [
+            {
+              AttributeName: 'stockId',
+              KeyType: 'HASH'
+            }
+          ],
+          ProvisionedThroughput: {
+            ReadCapacityUnits: 1,
+            WriteCapacityUnits: 1,
+          }
+        }, 
+      },
+      products: {
+        Type: 'AWS::DynamoDB::Table',
+        Properties: {
+          TableName: 'products',
+          AttributeDefinitions: [
+            {
+              AttributeName: 'productId',
+              AttributeType: 'S'
+            },
+          ],
+          KeySchema: [
+            {
+              AttributeName: 'productId',
+              KeyType: 'HASH'
+            }
+          ],
+          ProvisionedThroughput: {
+            ReadCapacityUnits: 1,
+            WriteCapacityUnits: 1,
+          }
+        }, 
+      },
+    }
+  }
   // configValidationMode: 'error'
 };
 
