@@ -10,6 +10,9 @@ const serverlessConfiguration: AWS = {
   provider: {
     name: 'aws',
     runtime: 'nodejs14.x',
+    iamManagedPolicies: [
+      `arn:aws:iam::${process.env.ACCOUNT_ID}:policy/LambdaDynamoPolicy`
+    ],
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
@@ -20,6 +23,10 @@ const serverlessConfiguration: AWS = {
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
+      PRODUCTS_TABLE_NAME: 'products',
+      STOCKS_TABLE_NAME: 'stocks',
+      ACCESS_KEY: process.env.ACCESS_KEY,
+      SECRET_ACCESS: process.env.SECRET_ACCESS,
     },
   },
   // import the function via paths
@@ -64,16 +71,17 @@ const serverlessConfiguration: AWS = {
       stocks: {
         Type: 'AWS::DynamoDB::Table',
         Properties: {
+          
           TableName: 'stocks',
           AttributeDefinitions: [
             {
-              AttributeName: 'stockId',
+              AttributeName: 'product_id',
               AttributeType: 'S'
             },
           ],
           KeySchema: [
             {
-              AttributeName: 'stockId',
+              AttributeName: 'product_id',
               KeyType: 'HASH'
             }
           ],
@@ -89,13 +97,13 @@ const serverlessConfiguration: AWS = {
           TableName: 'products',
           AttributeDefinitions: [
             {
-              AttributeName: 'productId',
+              AttributeName: 'id',
               AttributeType: 'S'
             },
           ],
           KeySchema: [
             {
-              AttributeName: 'productId',
+              AttributeName: 'id',
               KeyType: 'HASH'
             }
           ],
