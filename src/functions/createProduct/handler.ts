@@ -7,11 +7,16 @@ import { Product } from 'src/services/products/Product';
 
 const createProduct: ValidatedEventAPIGatewayProxyEvent<unknown> = async (event) => {
   try {
-    console.log(event);
     const productData: Partial<Product> = event.body;
-    const response = await createProductImpl(productData);
 
-    console.log(response)
+    if (!productData.title || !productData.description || !productData.price) {
+      return formatJSONResponse({
+        statusCode: 400,
+        response: 'Invalid data: one or more attributes are missing'
+      });
+    }
+
+    const response = await createProductImpl(productData);
     
     return formatJSONResponse({
       statusCode: 200,

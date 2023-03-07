@@ -27,21 +27,25 @@ const scanStocks = async () => {
 };
 
 const getProducts = async () => {
-  const [products, stocks] = await Promise.all([scanProducts(), scanStocks()]);
-  const productItems = products.Items;
-  const stockItems = stocks.Items;
-
-  const stockedProducts = productItems.reduce((acc, val) => {
-    const { id } = val;
-    const stock = stockItems.find((el) => el.product_id === id)?.stock;
-    const finalProduct = {
-      ...val,
-      stock: stock || undefined,
-    };
-    acc.push(finalProduct);
-    return acc;
-  }, []);
-  return stockedProducts as Product[];
+  try {
+    const [products, stocks] = await Promise.all([scanProducts(), scanStocks()]);
+    const productItems = products.Items;
+    const stockItems = stocks.Items;
+  
+    const stockedProducts = productItems.reduce((acc, val) => {
+      const { id } = val;
+      const stock = stockItems.find((el) => el.product_id === id)?.stock;
+      const finalProduct = {
+        ...val,
+        stock: stock || undefined,
+      };
+      acc.push(finalProduct);
+      return acc;
+    }, []);
+    return stockedProducts as Product[];
+  } catch (error) {
+    return Promise.reject('Internal server error');
+  }
 };
 
 export { getProducts };

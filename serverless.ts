@@ -10,7 +10,7 @@ const serverlessConfiguration: AWS = {
   plugins: ['serverless-openapi-documentation', 'serverless-esbuild'],
   provider: {
     name: 'aws',
-    runtime: 'nodejs14.x',
+    runtime: 'nodejs16.x',
     iamManagedPolicies: [
       `arn:aws:iam::${process.env.ACCOUNT_ID}:policy/LambdaDynamoPolicy`
     ],

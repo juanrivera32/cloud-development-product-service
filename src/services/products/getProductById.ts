@@ -38,19 +38,24 @@ const queryStock = async (id: string) => {
 };
 
 const getProductById = async (id: string) => {
-  const [products, stocks] = await Promise.all([
-    queryProduct(id),
-    queryStock(id),
-  ]);
-  const productItem = products.Items[0] as Product;
-  const { stock } = stocks.Items[0] as Stock;
+  try {
+    const [products, stocks] = await Promise.all([
+      queryProduct(id),
+      queryStock(id),
+    ]);
+    const productItem = products.Items[0] as Product;
+    const { stock } = stocks.Items[0] as Stock;
 
-  const product = {
-    ...productItem,
-    count: stock,
-  };
+    const product = {
+      ...productItem,
+      count: stock,
+    };
 
-  return product;
+    return product;
+  } catch (error) {
+    console.log(error)
+    return Promise.reject(`Error obtaining product ${id}`);
+  }
 };
 
 export { getProductById };

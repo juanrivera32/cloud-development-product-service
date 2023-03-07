@@ -24,7 +24,7 @@ const createProductImpl = async (product: Partial<Product>) => {
     return message;
 
   } catch (e) {
-    console.log('Error while creating a product: ', e);
+    return Promise.reject(`Error while creating a product: ${e}`)
   }
 }
 
