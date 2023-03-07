@@ -2,6 +2,7 @@ import type { AWS } from '@serverless/typescript';
 
 import getProductsList from '@functions/getProductsList';
 import getProductsById from '@functions/getProductsById';
+import createProduct from '@functions/createProduct';
 
 const serverlessConfiguration: AWS = {
   service: 'product-service',
@@ -9,7 +10,10 @@ const serverlessConfiguration: AWS = {
   plugins: ['serverless-openapi-documentation', 'serverless-esbuild'],
   provider: {
     name: 'aws',
-    runtime: 'nodejs14.x',
+    runtime: 'nodejs16.x',
+    iamManagedPolicies: [
+      `arn:aws:iam::${process.env.ACCOUNT_ID}:policy/LambdaDynamoPolicy`
+    ],
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
@@ -20,12 +24,17 @@ const serverlessConfiguration: AWS = {
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
+      PRODUCTS_TABLE_NAME: 'products',
+      STOCKS_TABLE_NAME: 'stocks',
+      ACCESS_KEY: process.env.ACCESS_KEY,
+      SECRET_ACCESS: process.env.SECRET_ACCESS,
     },
   },
   // import the function via paths
   functions: {
     getProductsList,
     getProductsById,
+    createProduct,
   },
   package: { individually: true },
   custom: {
@@ -59,6 +68,55 @@ const serverlessConfiguration: AWS = {
       ]
     }
   },
+  resources: {
+    Resources: {
+      stocks: {
+        Type: 'AWS::DynamoDB::Table',
+        Properties: {
+          
+          TableName: 'stocks',
+          AttributeDefinitions: [
+            {
+              AttributeName: 'product_id',
+              AttributeType: 'S'
+            },
+          ],
+          KeySchema: [
+            {
+              AttributeName: 'product_id',
+              KeyType: 'HASH'
+            }
+          ],
+          ProvisionedThroughput: {
+            ReadCapacityUnits: 1,
+            WriteCapacityUnits: 1,
+          }
+        }, 
+      },
+      products: {
+        Type: 'AWS::DynamoDB::Table',
+        Properties: {
+          TableName: 'products',
+          AttributeDefinitions: [
+            {
+              AttributeName: 'id',
+              AttributeType: 'S'
+            },
+          ],
+          KeySchema: [
+            {
+              AttributeName: 'id',
+              KeyType: 'HASH'
+            }
+          ],
+          ProvisionedThroughput: {
+            ReadCapacityUnits: 1,
+            WriteCapacityUnits: 1,
+          }
+        }, 
+      },
+    }
+  }
   // configValidationMode: 'error'
 };
 
