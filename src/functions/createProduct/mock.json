@@ -3,8 +3,9 @@
     "Accept": "*/*"
   },
   "body": {
-    "title": "new title for my book",
-    "description": "Amazing description",
-    "price": 20.99
+    "title": "Sapiens: A Brief History Of Humankind",
+    "description": "A brief history of humankind",
+    "price": 29.99,
+    "stock": 6
   }
 }
