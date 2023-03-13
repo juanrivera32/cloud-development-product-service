@@ -14,10 +14,11 @@ const myBucket = process.env.IMPORT_BUCKET_NAME;
 const signedUrlExpireSeconds = 3600;
 
 export const getSignedUrl = (fileName: string) => {
-  const url = s3.getSignedUrl('getObject', {
+  const url = s3.getSignedUrl('putObject', {
     Bucket: myBucket,
     Key: `uploaded/${fileName}`,
     Expires: signedUrlExpireSeconds,
+    'ContentType': 'text/csv'
   });
 
   console.log('inside th services/getSignedUrl: ', url);

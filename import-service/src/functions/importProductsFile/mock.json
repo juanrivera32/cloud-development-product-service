@@ -1,6 +1,7 @@
 {
   "headers": {
-    "Accept": "*/*"
+    "Accept": "*/*",
+    "Content-Type": "text/csv"
   },
   "path": "/import",
   "queryStringParameters": {
