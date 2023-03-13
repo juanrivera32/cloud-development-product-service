@@ -1,0 +1,10 @@
+{
+  "headers": {
+    "Accept": "*/*",
+    "Content-Type": "text/csv"
+  },
+  "path": "/import",
+  "queryStringParameters": {
+    "name": "example.csv"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "headers": {
+    "Accept": "*/*"
+  },
+  "body": {
+    "title": "Sapiens: A Brief History Of Humankind",
+    "description": "A brief history of humankind",
+    "price": 29.99,
+    "stock": 6
+  }
+}
