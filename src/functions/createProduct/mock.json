@@ -1,0 +1,10 @@
+{
+  "headers": {
+    "Accept": "*/*"
+  },
+  "body": {
+    "title": "new title for my book",
+    "description": "Amazing description",
+    "price": 20.99
+  }
+}

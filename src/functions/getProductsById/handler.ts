@@ -1,20 +1,12 @@
 import type { ValidatedEventAPIGatewayProxyEvent } from '@libs/api-gateway';
 import { formatJSONResponse } from '@libs/api-gateway';
 import { middyfy } from '@libs/lambda';
-import products from '@libs/mockProducts.json';
-import type { Product } from 'src/models/Product';
-
-const findProduct = (productId: string): Promise<Product> => {
-  const product = products.find(product => product.id === productId);
-
-  if (!product) return Promise.resolve(undefined);
-  return Promise.resolve(product);
-}
+import { getProductById } from 'src/services/products/getProductById';
 
 const getProductsById: ValidatedEventAPIGatewayProxyEvent<unknown> = async (event) => {
   try {
     const productId = event.path.split('/').filter(Boolean)[1];
-    const product = await findProduct(productId);
+    const product = await getProductById(productId);
 
     if (!product) {
       return formatJSONResponse({
