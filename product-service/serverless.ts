@@ -15,6 +15,7 @@ const serverlessConfiguration: AWS = {
     runtime: 'nodejs16.x',
     iamManagedPolicies: [
       `arn:aws:iam::${process.env.ACCOUNT_ID}:policy/LambdaDynamoPolicy`,
+      `arn:aws:iam::${process.env.ACCOUNT_ID}:policy/LambdaPublishToSNS`
     ],
     apiGateway: {
       minimumCompressionSize: 1024,
@@ -30,7 +31,9 @@ const serverlessConfiguration: AWS = {
       STOCKS_TABLE_NAME: 'stocks',
       ACCESS_KEY: process.env.ACCESS_KEY,
       SECRET_ACCESS: process.env.SECRET_ACCESS,
-      CATALOG_ITEMS_QUEUE: process.env.CATALOG_ITEMS_QUEUE
+      CATALOG_ITEMS_QUEUE: process.env.CATALOG_ITEMS_QUEUE,
+      EMAIL_SUBSCRIPTION_ENDPOINT: process.env.EMAIL_SUBSCRIPTION_ENDPOINT,
+      CREATE_PRODUCT_TOPIC_ARN: process.env.CREATE_PRODUCT_TOPIC_ARN,
     },
   },
   // import the function via paths
@@ -126,6 +129,21 @@ const serverlessConfiguration: AWS = {
           VisibilityTimeout: 600,
         },
       },
+      CreateProductTopic: {
+        Type: 'AWS::SNS::Topic',
+        Properties: {
+          DisplayName: 'CreateProductTopic',
+          TopicName: 'CreateProductTopic',
+        },
+      },
+      createProductTopicSubscription: {
+        Type: 'AWS::SNS::Subscription',
+        Properties: {
+          Endpoint: process.env.EMAIL_SUBSCRIPTION_ENDPOINT,
+          Protocol: 'email',
+          TopicArn : { "Ref" : "CreateProductTopic" }
+        }
+      }
     },
   },
   // configValidationMode: 'error'

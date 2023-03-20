@@ -3,15 +3,20 @@ import { formatJSONResponse } from '@libs/api-gateway';
 
 import middy from '@middy/core';
 import inputOutputLogger from '@middy/input-output-logger';
+import { processMessages } from 'src/services/catalog/processMessages';
 
-const catalogBatchProcess: ValidatedEventAPIGatewayProxyEvent<unknown> = async (
+
+
+const catalogBatchProcessHandler: ValidatedEventAPIGatewayProxyEvent<unknown> = async (
   event
 ) => {
   // @ts-ignore
-  event.Records.forEach(record => {
+  for (const record of event.Records) {
     const { body } = record;
-    console.log('<> - ', body);
-  });
+    console.log('Hiii, ', body);
+    // call service
+    await processMessages(body);
+  }
 
   return formatJSONResponse({
     statusCode: 200,
@@ -19,4 +24,4 @@ const catalogBatchProcess: ValidatedEventAPIGatewayProxyEvent<unknown> = async (
   });
 };
 
-export const main = middy(catalogBatchProcess).use(inputOutputLogger());
+export const main = middy(catalogBatchProcessHandler).use(inputOutputLogger());
