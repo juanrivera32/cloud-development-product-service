@@ -13,7 +13,6 @@ const catalogBatchProcessHandler: ValidatedEventAPIGatewayProxyEvent<unknown> = 
   // @ts-ignore
   for (const record of event.Records) {
     const { body } = record;
-    console.log('Hiii, ', body);
     // call service
     await processMessages(body);
   }
