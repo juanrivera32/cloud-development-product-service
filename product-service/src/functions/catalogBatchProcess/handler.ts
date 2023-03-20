@@ -1,13 +1,16 @@
 import type { ValidatedEventAPIGatewayProxyEvent } from '@libs/api-gateway';
 import { formatJSONResponse } from '@libs/api-gateway';
-import { middyfy } from '@libs/lambda';
+
+import middy from '@middy/core';
+import inputOutputLogger from '@middy/input-output-logger';
+
 const catalogBatchProcess: ValidatedEventAPIGatewayProxyEvent<unknown> = async (
   event
 ) => {
   // @ts-ignore
   event.Records.forEach(record => {
     const { body } = record;
-    console.log(body);
+    console.log('<> - ', body);
   });
 
   return formatJSONResponse({
@@ -16,4 +19,4 @@ const catalogBatchProcess: ValidatedEventAPIGatewayProxyEvent<unknown> = async (
   });
 };
 
-export const main = middyfy(catalogBatchProcess);
+export const main = middy(catalogBatchProcess).use(inputOutputLogger());

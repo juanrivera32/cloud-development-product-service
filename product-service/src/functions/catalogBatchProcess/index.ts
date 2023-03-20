@@ -5,7 +5,9 @@ export default {
   events: [
     {
       sqs: {
-        arn: 'arn:aws:sqs:us-east-1:029589388983:catalogItemsQueue',
+        arn: {
+          'Fn::GetAtt': ['catalogItemsQueue', 'Arn'],
+        },
         batchSize: 5,
       },
     },

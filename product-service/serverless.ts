@@ -14,7 +14,7 @@ const serverlessConfiguration: AWS = {
     name: 'aws',
     runtime: 'nodejs16.x',
     iamManagedPolicies: [
-      `arn:aws:iam::${process.env.ACCOUNT_ID}:policy/LambdaDynamoPolicy`
+      `arn:aws:iam::${process.env.ACCOUNT_ID}:policy/LambdaDynamoPolicy`,
     ],
     apiGateway: {
       minimumCompressionSize: 1024,
@@ -30,6 +30,7 @@ const serverlessConfiguration: AWS = {
       STOCKS_TABLE_NAME: 'stocks',
       ACCESS_KEY: process.env.ACCESS_KEY,
       SECRET_ACCESS: process.env.SECRET_ACCESS,
+      CATALOG_ITEMS_QUEUE: process.env.CATALOG_ITEMS_QUEUE
     },
   },
   // import the function via paths
@@ -37,7 +38,7 @@ const serverlessConfiguration: AWS = {
     getProductsList,
     getProductsById,
     createProduct,
-    catalogBatchProcess
+    catalogBatchProcess,
   },
   package: { individually: true },
   custom: {
@@ -54,47 +55,47 @@ const serverlessConfiguration: AWS = {
     documentation: {
       version: '1',
       title: 'Products Service API',
-      description: 'This is the products service API used for the AWS Practitioner for JS course.',
+      description:
+        'This is the products service API used for the AWS Practitioner for JS course.',
       models: [
         {
           name: 'ErrorResponse',
           description: 'This is an error',
           contentType: 'application/json',
-          schema: `${__dirname}/models/ErrorResponse.json`
+          schema: `${__dirname}/models/ErrorResponse.json`,
         },
         {
           name: 'Product',
           description: 'Schema for product definition',
           contentType: 'application/json',
-          schema: `${__dirname}/models/Product.json`
-        }
-      ]
-    }
+          schema: `${__dirname}/models/Product.json`,
+        },
+      ],
+    },
   },
   resources: {
     Resources: {
       stocks: {
         Type: 'AWS::DynamoDB::Table',
         Properties: {
-          
           TableName: 'stocks',
           AttributeDefinitions: [
             {
               AttributeName: 'product_id',
-              AttributeType: 'S'
+              AttributeType: 'S',
             },
           ],
           KeySchema: [
             {
               AttributeName: 'product_id',
-              KeyType: 'HASH'
-            }
+              KeyType: 'HASH',
+            },
           ],
           ProvisionedThroughput: {
             ReadCapacityUnits: 1,
             WriteCapacityUnits: 1,
-          }
-        }, 
+          },
+        },
       },
       products: {
         Type: 'AWS::DynamoDB::Table',
@@ -103,31 +104,30 @@ const serverlessConfiguration: AWS = {
           AttributeDefinitions: [
             {
               AttributeName: 'id',
-              AttributeType: 'S'
+              AttributeType: 'S',
             },
           ],
           KeySchema: [
             {
               AttributeName: 'id',
-              KeyType: 'HASH'
-            }
+              KeyType: 'HASH',
+            },
           ],
           ProvisionedThroughput: {
             ReadCapacityUnits: 1,
             WriteCapacityUnits: 1,
-          }
-        }, 
+          },
+        },
       },
-      catalogItemsQueue: {  
+      catalogItemsQueue: {
         Type: 'AWS::SQS::Queue',
         Properties: {
           QueueName: 'catalogItemsQueue',
-          VisibilityTimeout: 600,          
-        }
-
-      }
-    }
-  }
+          VisibilityTimeout: 600,
+        },
+      },
+    },
+  },
   // configValidationMode: 'error'
 };
 
