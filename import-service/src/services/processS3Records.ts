@@ -3,17 +3,15 @@ import csvParser from 'csv-parser';
 
 AWS.config.update({
   region: 'us-east-1',
-  credentials: {
-    accessKeyId: process.env.ACCESS_KEY,
-    secretAccessKey: process.env.SECRET_ACCESS,
-  },
 });
 
 const s3 = new AWS.S3();
+const sqsClient = new AWS.SQS();
 
 const myBucket = process.env.IMPORT_BUCKET_NAME;
+const queueUrl = process.env.QUEUE_URL;
 
-export const getObjectFromS3 = async (objectKey) => {
+export const processS3Records = async (objectKey) => {
   try {
     const s3ResponseStream = s3
       .getObject({ Bucket: myBucket, Key: objectKey })
@@ -22,13 +20,15 @@ export const getObjectFromS3 = async (objectKey) => {
     console.log(`>>>>>> Starting parsing process for ${objectKey}...`);
 
     const data = s3ResponseStream.pipe(csvParser({ separator: ';' }));
-    const chunks = [];
-    for await (const chunk of data) {
-      chunks.push(chunk);
-      console.log('chunk ---- ', JSON.stringify(chunk));
-    }
 
-    return chunks;
+    for await (const chunk of data) {
+      const body = JSON.stringify(chunk);
+      console.log('Sending record to SQS...');
+      const sqsRes = await sqsClient
+        .sendMessage({ DelaySeconds: 0, MessageBody: body, QueueUrl: queueUrl })
+        .promise();
+      console.log(`Message ${sqsRes.MessageId} sent successfully `);
+    }
   } catch (e) {
     console.log(e);
   }

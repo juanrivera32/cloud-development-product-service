@@ -3,9 +3,11 @@ import type { AWS } from '@serverless/typescript';
 import getProductsList from '@functions/getProductsList';
 import getProductsById from '@functions/getProductsById';
 import createProduct from '@functions/createProduct';
+import catalogBatchProcess from '@functions/catalogBatchProcess';
 
 const serverlessConfiguration: AWS = {
   service: 'product-service',
+  useDotenv: true,
   frameworkVersion: '3',
   plugins: ['serverless-openapi-documentation', 'serverless-esbuild'],
   provider: {
@@ -35,6 +37,7 @@ const serverlessConfiguration: AWS = {
     getProductsList,
     getProductsById,
     createProduct,
+    catalogBatchProcess
   },
   package: { individually: true },
   custom: {
@@ -115,6 +118,14 @@ const serverlessConfiguration: AWS = {
           }
         }, 
       },
+      catalogItemsQueue: {  
+        Type: 'AWS::SQS::Queue',
+        Properties: {
+          QueueName: 'catalogItemsQueue',
+          VisibilityTimeout: 600,          
+        }
+
+      }
     }
   }
   // configValidationMode: 'error'
