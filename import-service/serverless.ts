@@ -65,8 +65,7 @@ const serverlessConfiguration: AWS = {
             'gatewayresponse.header.Access-Control-Allow-Origin': "'*'",
             'gatewayresponse.header.Access-Control-Allow-Headers': "'*'",
           },
-          ResponseType: 'UNAUTHORIZED',
-          StatusCode: '401',
+          ResponseType: 'DEFAULT_4XX',
           RestApiId: {
             Ref: 'ApiGatewayRestApi'
           }
