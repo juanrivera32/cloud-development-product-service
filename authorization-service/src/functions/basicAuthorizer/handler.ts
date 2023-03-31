@@ -1,39 +1,19 @@
-import type { ValidatedEventAPIGatewayProxyEvent } from '@libs/api-gateway';
-import { formatJSONResponse } from '@libs/api-gateway';
-import { middyfy } from '@libs/lambda';
-import { isValidUser } from 'src/services/auth';
+import {
+  APIGatewayRequestAuthorizerEvent,
+  APIGatewayAuthorizerResult,
+} from 'aws-lambda';
+import { isValidUser, generateResponse } from 'src/services/auth';
 
-
-
-const getProductsList: ValidatedEventAPIGatewayProxyEvent<unknown> = async (event) => {
-  try {
+export const main = async (
+  event: APIGatewayRequestAuthorizerEvent
+): Promise<APIGatewayAuthorizerResult> => {
     const authHeader: string = event.headers.Authorization;
-    
-    if (!authHeader) {
-      return formatJSONResponse({
-        statusCode: 401,
-        response: 'Authorization header is not provided.'
-      });
-    }
+    console.log(JSON.stringify(event));
+    const { methodArn } = event;
+    const response = isValidUser(authHeader)
+      ? generateResponse('testPrincipal', 'Allow', methodArn)
+      : generateResponse('testPrincipal', 'Deny', methodArn);
 
-    if (!isValidUser(authHeader)) {
-      return formatJSONResponse({
-        statusCode: 403,
-        response: 'Invalid user'
-      });
-    }
-
-    return formatJSONResponse({
-      statusCode: 200,
-      response: 'Success'
-    });
-  } catch (error) {
-    return formatJSONResponse({
-      statusCode: 500,
-      message: `Internal server error: ${error}`
-    })
-  }
-
+    return response;
 };
 
-export const main = middyfy(getProductsList);
