@@ -4,14 +4,14 @@ import {
 } from '@libs/api-gateway';
 import middy from '@middy/core';
 import inputOutputLogger from '@middy/input-output-logger';
-import { getObjectFromS3 } from 'src/services/getObjectFromS3';
+import { processS3Records } from 'src/services/processS3Records';
 
-const getObjectFromS3Handler: ValidatedEventAPIGatewayProxyEvent<
+const processS3RecordsHandler: ValidatedEventAPIGatewayProxyEvent<
   unknown
 > = async (event) => {
   // @ts-ignore
   for (const record of event.Records) {
-    await getObjectFromS3(record.s3.object.key);
+    await processS3Records(record.s3.object.key);
     console.log(`Parsed ${record.s3.object.key} successfully`);
   }
 
@@ -21,4 +21,4 @@ const getObjectFromS3Handler: ValidatedEventAPIGatewayProxyEvent<
   });
 };
 
-export const main = middy(getObjectFromS3Handler).use(inputOutputLogger());
+export const main = middy(processS3RecordsHandler).use(inputOutputLogger());
