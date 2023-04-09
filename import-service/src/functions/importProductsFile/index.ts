@@ -14,6 +14,13 @@ export default {
             }
           }
         },
+        cors: true,
+        authorizer: {
+          arn: `arn:aws:lambda:${process.env.AWS_REGION}:${process.env.ACCOUNT_ID}:function:authorization-service-dev-basicAuthorizer`,
+          type: 'request',
+          identitySource: 'method.request.header.Authorization',
+          resultTtlInSeconds: 1,
+        }
       },
     },
   ],

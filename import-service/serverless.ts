@@ -6,8 +6,8 @@ import importFileParser from '@functions/importFileParser';
 const serverlessConfiguration: AWS = {
   service: 'import-service',
   frameworkVersion: '3',
-  plugins: ['serverless-esbuild'],
   useDotenv: true,
+  plugins: ['serverless-dotenv-plugin', 'serverless-esbuild'],
   provider: {
     name: 'aws',
     runtime: 'nodejs16.x',
@@ -50,6 +50,29 @@ const serverlessConfiguration: AWS = {
       concurrency: 10,
     },
   },
+  resources: {
+    Resources: {
+      ApiGatewayRestApi: {
+        Type: 'AWS::ApiGateway::RestApi',
+        Properties: {
+          Name: 'import-service',
+        },
+      },
+      GatewayResponse: {
+        Type: 'AWS::ApiGateway::GatewayResponse',
+        Properties: {
+          ResponseParameters: {
+            'gatewayresponse.header.Access-Control-Allow-Origin': "'*'",
+            'gatewayresponse.header.Access-Control-Allow-Headers': "'*'",
+          },
+          ResponseType: 'DEFAULT_4XX',
+          RestApiId: {
+            Ref: 'ApiGatewayRestApi'
+          }
+        }
+      }
+    }
+  }
 };
 
 module.exports = serverlessConfiguration;
